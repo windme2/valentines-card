@@ -46,3 +46,31 @@ document.getElementById("close-popup").addEventListener("click", function () {
     document.getElementById("popup").style.display = "none";
   }, 500);
 });
+
+document.querySelectorAll(".image-item").forEach((image) => {
+  image.addEventListener("click", function () {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+
+    lightbox.style.display = "flex";
+    lightbox.style.opacity = 1;
+    lightboxImg.src = this.src;
+  });
+});
+
+document.getElementById("close").addEventListener("click", function () {
+  const lightbox = document.getElementById("lightbox");
+  lightbox.style.opacity = 0;
+  setTimeout(function () {
+    lightbox.style.display = "none";
+  }, 300);
+});
+
+document.getElementById("lightbox").addEventListener("click", function (event) {
+  if (event.target === this) {
+    this.style.opacity = 0;
+    setTimeout(function () {
+      event.target.style.display = "none";
+    }, 300);
+  }
+});
